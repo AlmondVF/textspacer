@@ -5,7 +5,7 @@ from wordfreq import get_frequency_dict
 
 # Variables
 word_prob = get_frequency_dict(lang='en', wordlist='large')
-max_word_len = max(map(len, word_prob))  # 34
+max_word_len = max(map(len, word_prob))
 
 # Text cleaning
 inputtext = input("Enter text to space:") # gets text from user
