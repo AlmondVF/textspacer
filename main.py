@@ -1,6 +1,6 @@
 # Imports
-import numpy as np
 import re
+import numpy as np
 from wordfreq import get_frequency_dict
 
 # Variables
@@ -26,13 +26,9 @@ def viterbi_segment(text, debug=False):
       new_probs.append((compounded_prob, j))
 
       if debug:
-        print(
-          f'[{j}:{i}] = "{text[lasts[j]:j]} & {substring}" = ({probs[j]:.8f} & {freq:.8f}) = {compounded_prob:.8f}'
-        )
+        print(f'[{j}:{i}] = "{text[lasts[j]:j]} & {substring}" = ({probs[j]:.8f} & {freq:.8f}) = {compounded_prob:.8f}')
 
-    prob_k, k = max(
-      new_probs
-    )  # max of a touple is the max across the first elements, which is the max of the compounded probabilities
+    prob_k, k = max(new_probs)  # max of a touple is the max across the first elements, which is the max of the compounded probabilities
     probs.append(prob_k)
     lasts.append(k)
 
@@ -56,8 +52,7 @@ def viterbi_segment(text, debug=False):
 
 # Subroutine for splitting words
 def split_message(message):
-  new_message = ' '.join(
-    viterbi_segment(wordmash, debug=False) for wordmash in message.split())
+  new_message = ' '.join(viterbi_segment(wordmash, debug=False) for wordmash in message.split())
   return new_message
 
 # List
